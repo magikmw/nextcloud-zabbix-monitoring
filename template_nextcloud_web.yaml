@@ -30,7 +30,7 @@ zabbix_export:
               parameters:
                 - number(/ocs/data/activeUsers/last5minutes)
           timeout: 1m
-          url: 'https://{$NCU}:{$NCPW}@{HOST.DNS}/ocs/v2.php/apps/serverinfo/api/v1/info'
+          url: 'https://{$NCU}:{$NCPW}@{$NCURL}/ocs/v2.php/apps/serverinfo/api/v1/info'
         -
           name: 'Number files'
           type: HTTP_AGENT
@@ -45,7 +45,7 @@ zabbix_export:
               parameters:
                 - number(/ocs/data/nextcloud/storage/num_files)
           timeout: 1m
-          url: 'https://{$NCU}:{$NCPW}@{HOST.DNS}/ocs/v2.php/apps/serverinfo/api/v1/info'
+          url: 'https://{$NCU}:{$NCPW}@{$NCURL}/ocs/v2.php/apps/serverinfo/api/v1/info'
         -
           name: 'Number shares'
           type: HTTP_AGENT
@@ -60,7 +60,7 @@ zabbix_export:
               parameters:
                 - number(/ocs/data/nextcloud/shares/num_shares)
           timeout: 1m
-          url: 'https://{$NCU}:{$NCPW}@{HOST.DNS}/ocs/v2.php/apps/serverinfo/api/v1/info'
+          url: 'https://{$NCU}:{$NCPW}@{$NCURL}/ocs/v2.php/apps/serverinfo/api/v1/info'
         -
           name: 'number of group shares'
           type: HTTP_AGENT
@@ -75,7 +75,7 @@ zabbix_export:
               parameters:
                 - number(/ocs/data/nextcloud/shares/num_shares_groups)
           timeout: 1m
-          url: 'https://{$NCU}:{$NCPW}@{HOST.DNS}/ocs/v2.php/apps/serverinfo/api/v1/info'
+          url: 'https://{$NCU}:{$NCPW}@{$NCURL}/ocs/v2.php/apps/serverinfo/api/v1/info'
         -
           name: 'shares via link'
           type: HTTP_AGENT
@@ -90,7 +90,7 @@ zabbix_export:
               parameters:
                 - number(/ocs/data/nextcloud/shares/num_shares_link)
           timeout: 1m
-          url: 'https://{$NCU}:{$NCPW}@{HOST.DNS}/ocs/v2.php/apps/serverinfo/api/v1/info'
+          url: 'https://{$NCU}:{$NCPW}@{$NCURL}/ocs/v2.php/apps/serverinfo/api/v1/info'
         -
           name: 'shares via link with out password'
           type: HTTP_AGENT
@@ -105,7 +105,7 @@ zabbix_export:
               parameters:
                 - number(/ocs/data/nextcloud/shares/num_shares_link_no_password)
           timeout: 1m
-          url: 'https://{$NCU}:{$NCPW}@{HOST.DNS}/ocs/v2.php/apps/serverinfo/api/v1/info'
+          url: 'https://{$NCU}:{$NCPW}@{$NCURL}/ocs/v2.php/apps/serverinfo/api/v1/info'
         -
           name: 'number of sharred with users'
           type: HTTP_AGENT
@@ -120,7 +120,7 @@ zabbix_export:
               parameters:
                 - number(/ocs/data/nextcloud/shares/num_shares_user)
           timeout: 1m
-          url: 'https://{$NCU}:{$NCPW}@{HOST.DNS}/ocs/v2.php/apps/serverinfo/api/v1/info'
+          url: 'https://{$NCU}:{$NCPW}@{$NCURL}/ocs/v2.php/apps/serverinfo/api/v1/info'
         -
           name: 'Nextcloud Version'
           type: HTTP_AGENT
@@ -137,7 +137,7 @@ zabbix_export:
               parameters:
                 - string(/ocs/data/nextcloud/system/version)
           timeout: 1m
-          url: 'https://{$NCU}:{$NCPW}@{HOST.DNS}/ocs/v2.php/apps/serverinfo/api/v1/info'
+          url: 'https://{$NCU}:{$NCPW}@{$NCURL}/ocs/v2.php/apps/serverinfo/api/v1/info'
       macros:
         -
           macro: '{$NCPW}'
@@ -145,6 +145,9 @@ zabbix_export:
         -
           macro: '{$NCU}'
           value: user
+        -
+          macro: '{$NCURL}'
+          value: url
   graphs:
     -
       name: 'Active Users'
